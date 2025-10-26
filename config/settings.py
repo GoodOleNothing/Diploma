@@ -45,8 +45,12 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'rest_framework_simplejwt',
+    'drf_yasg',
+
+    'phonenumber_field',
 
     'users',
+    'library',
 ]
 
 MIDDLEWARE = [
@@ -142,3 +146,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # AUTH
 AUTH_USER_MODEL = 'users.User'
 
+# Rest
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
+    "DEFAULT_PERMISSION_CLASSES": (
+        "rest_framework.permissions.IsAuthenticatedOrReadOnly",
+    ),
+}
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=600),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'AUTH_HEADER_TYPES': ('Bearer',),
+}
