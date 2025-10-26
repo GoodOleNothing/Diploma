@@ -1,6 +1,6 @@
 from django.contrib import admin
 from users.models import User
-from library.models import Author, Book, Borrow
+from library.models import Author, Book, Borrow, BookRequest
 
 @admin.register(User)
 class User(admin.ModelAdmin):
@@ -20,3 +20,8 @@ class Book(admin.ModelAdmin):
 @admin.register(Borrow)
 class Borrow(admin.ModelAdmin):
     list_display = ('user', 'book', 'borrowed_at', 'due_date', 'returned_at', 'status')
+
+
+@admin.register(BookRequest)
+class BookRequest(admin.ModelAdmin):
+    list_display = ('user', 'book', 'desired_due_date', 'created_at', 'status')

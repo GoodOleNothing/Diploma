@@ -1,5 +1,7 @@
 from rest_framework import serializers
-from .models import Author, Book, Borrow
+from rest_framework.validators import UniqueTogetherValidator
+
+from .models import Author, Book, Borrow, BookRequest
 from django.utils import timezone
 
 
@@ -86,5 +88,58 @@ class BorrowReturnSerializer(serializers.ModelSerializer):
         book = instance.book
         book.available_copies += 1
         book.save()
+
+        return instance
+
+
+class BookRequestCreateSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
+    class Meta:
+        model = BookRequest
+        fields = ("user", "book", "desired_due_date")
+        validators = [
+            UniqueTogetherValidator(
+                queryset=BookRequest.objects.all(),
+                fields=["user", "book"],
+                message="Вы уже отправили заявку на эту книгу."
+            )
+        ]
+
+    def validate(self, attrs):
+        if attrs["desired_due_date"] <= timezone.now().date():
+            raise serializers.ValidationError("Дата возврата должна быть позже сегодняшнего дня.")
+        return attrs
+
+    def create(self, validated_data):
+        return BookRequest.objects.create(
+            user=self.context["request"].user,
+            **validated_data
+        )
+
+
+class BookRequestApproveSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BookRequest
+        fields = ("id",)
+
+    def update(self, instance, validated_data):
+        instance.status = "approved"
+        instance.save()
+
+        book = instance.book
+
+        # Создаём Borrow с датой, указанной в заявке
+        Borrow.objects.create(
+            user=instance.user,
+            book=book,
+            due_date=instance.desired_due_date,
+            status="borrowed"
+        )
+
+        # уменьшаем копии
+        if book.available_copies > 0:
+            book.available_copies -= 1
+            book.save()
 
         return instance

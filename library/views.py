@@ -3,10 +3,11 @@ from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from users.permissions import IsAdministrator
 from rest_framework.response import Response
-from .models import Author, Book, Borrow
+from .models import Author, Book, Borrow, BookRequest
 from .serializers import (
     AuthorSerializer, BookSerializer, BookCreateUpdateSerializer,
-    BorrowSerializer, BorrowCreateSerializer, BorrowReturnSerializer
+    BorrowSerializer, BorrowCreateSerializer, BorrowReturnSerializer,
+    BookRequestCreateSerializer, BookRequestApproveSerializer
 )
 
 
@@ -63,5 +64,32 @@ class BorrowListAPIView(generics.ListAPIView):
     serializer_class = BorrowSerializer
     permission_classes = [IsAuthenticated]
     #pagination_class = StandardResultsSetPagination
+
     def get_queryset(self):
         return Borrow.objects.filter(user=self.request.user)
+
+
+class BookRequestViewSet(viewsets.ModelViewSet):
+    queryset = BookRequest.objects.all()
+    permission_classes = [IsAuthenticated]
+
+
+    def get_serializer_class(self):
+        if self.action == "approve_request":
+            return BookRequestApproveSerializer
+        return BookRequestCreateSerializer
+
+    def get_queryset(self):
+        # Админ видит все, пользователь — только свои
+        user = self.request.user
+        if user.groups.filter(name="Administrator").exists():
+            return BookRequest.objects.all()
+        return BookRequest.objects.filter(user=user)
+
+    @action(detail=True, methods=["post"], permission_classes=[IsAuthenticated, IsAdministrator])
+    def approve(self, request, pk=None):
+        request_obj = self.get_object()
+        serializer = BookRequestApproveSerializer(request_obj, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response({"detail": "Заявка одобрена, книга выдана!"})
