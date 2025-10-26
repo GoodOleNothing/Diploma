@@ -1,11 +1,22 @@
 from rest_framework import serializers
+
+from library.serializers import BorrowSerializer
 from users.models import User
+from library.models import Borrow
 
 
 class UserSerializer(serializers.ModelSerializer):
+    borrows = serializers.SerializerMethodField()
+
     class Meta:
         model = User
-        fields = "__all__"
+        fields = ("id", "email",  "phone", "avatar", "city", "borrows")
+
+    def get_borrows(self, obj):
+        borrows_qs = Borrow.objects.filter(user=obj.id)
+        if borrows_qs:
+            return BorrowSerializer(borrows_qs, many=True).data
+        return "Отсутствуют"
 
 
 class UserRegisterSerializer(serializers.ModelSerializer):

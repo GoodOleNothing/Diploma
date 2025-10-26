@@ -10,7 +10,7 @@ from users.views import UserViewSet, RegisterView
 app_name = 'users'
 
 router = DefaultRouter()
-router.register(r'users', UserViewSet, basename='user')
+router.register(r'', UserViewSet, basename='user')
 
 urlpatterns = [
     path('', include(router.urls)),
