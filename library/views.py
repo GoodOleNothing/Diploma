@@ -3,11 +3,15 @@ from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from users.permissions import IsAdministrator
 from rest_framework.response import Response
+from .pagination import StandardResultsSetPagination
+from .filters import BookFilter, BorrowFilter
+from rest_framework.filters import SearchFilter, OrderingFilter
+from django_filters.rest_framework import DjangoFilterBackend
 from .models import Author, Book, Borrow, BookRequest
 from .serializers import (
     AuthorSerializer, BookSerializer, BookCreateUpdateSerializer,
     BorrowSerializer, BorrowCreateSerializer, BorrowReturnSerializer,
-    BookRequestCreateSerializer, BookRequestApproveSerializer, BookRequestSerializer
+    BookRequestCreateSerializer, BookRequestApproveSerializer, BookRequestSerializer, BookRequestRejectSerializer
 )
 
 
@@ -15,17 +19,24 @@ class AuthorViewSet(viewsets.ModelViewSet):
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
     permission_classes = [IsAuthenticated, IsAdministrator]
+    pagination_class = StandardResultsSetPagination
 
 
 class AuthorListAPIView(generics.ListAPIView):
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
     permission_classes = [IsAuthenticated]
-    #pagination_class = StandardResultsSetPagination
+    pagination_class = StandardResultsSetPagination
 
 
 class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
+
+    filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)
+    filterset_class = BookFilter
+    search_fields = ("title", "author__last_name", "genre")
+    ordering_fields = ("title", "publication_year")
+    pagination_class = StandardResultsSetPagination
 
     def get_serializer_class(self):
         if self.action in ("create", "update", "partial_update"):
@@ -38,13 +49,26 @@ class BookViewSet(viewsets.ModelViewSet):
 class BookListAPIView(generics.ListAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
+
+    filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)
+    filterset_class = BookFilter
+    search_fields = ("title", "author__name", "genre")
+    ordering_fields = ("title", "created_at")
+
+    pagination_class = StandardResultsSetPagination
     permission_classes = [IsAuthenticated]
-    #pagination_class = StandardResultsSetPagination
 
 
 class BorrowViewSet(viewsets.ModelViewSet):
     queryset = Borrow.objects.all()
     permission_classes = [IsAuthenticated, IsAdministrator]
+
+    filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)
+    filterset_class = BorrowFilter
+    search_fields = ("status",)
+    ordering_fields = ("title", "created_at")
+    pagination_class = StandardResultsSetPagination
+
 
     def get_serializer_class(self):
         if self.action == "create":
@@ -63,7 +87,7 @@ class BorrowViewSet(viewsets.ModelViewSet):
 class BorrowListAPIView(generics.ListAPIView):
     serializer_class = BorrowSerializer
     permission_classes = [IsAuthenticated]
-    #pagination_class = StandardResultsSetPagination
+    pagination_class = StandardResultsSetPagination
 
     def get_queryset(self):
         return Borrow.objects.filter(user=self.request.user)
@@ -72,6 +96,7 @@ class BorrowListAPIView(generics.ListAPIView):
 class BookRequestViewSet(viewsets.ModelViewSet):
     queryset = BookRequest.objects.all()
     permission_classes = [IsAuthenticated]
+    pagination_class = StandardResultsSetPagination
 
     def get_serializer_class(self):
         if self.action in ("create", "update", "partial_update"):
@@ -83,7 +108,7 @@ class BookRequestViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         user = self.request.user
         if user.groups.filter(name="Administrator").exists():
-            return BookRequest.objects.all()
+            return BookRequest.objects.filter(status="pending")
         return BookRequest.objects.filter(user=user)
 
     @action(detail=True, methods=["post"], permission_classes=[IsAuthenticated, IsAdministrator])
@@ -93,3 +118,11 @@ class BookRequestViewSet(viewsets.ModelViewSet):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response({"detail": "Заявка одобрена, книга выдана!"})
+
+    @action(detail=True, methods=["post"], permission_classes=[IsAuthenticated, IsAdministrator])
+    def reject(self, request, pk=None):
+        request_obj = self.get_object()
+        serializer = BookRequestRejectSerializer(request_obj, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response({"detail": "Заявка отклонена!"})

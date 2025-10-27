@@ -10,13 +10,21 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ("id", "email", "password", "phone", "avatar", "city", "borrows")
+        fields = ("id", "email", "phone", "avatar", "city", "borrows")
 
     def get_borrows(self, obj):
         borrows_qs = Borrow.objects.filter(user=obj.id)
-        if borrows_qs:
-            return BorrowSerializer(borrows_qs, many=True).data
-        return "Отсутствуют"
+
+        if not borrows_qs.exists():
+            return "Отсутствуют"
+
+        data = BorrowSerializer(borrows_qs, many=True).data
+
+        # Удаляем поле user из каждого элемента
+        for item in data:
+            item.pop("user", None)
+
+        return data
 
 
 class UserRegisterSerializer(serializers.ModelSerializer):

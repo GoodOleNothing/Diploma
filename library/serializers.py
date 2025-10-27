@@ -1,8 +1,12 @@
+from django.contrib.auth import get_user_model
 from rest_framework import serializers
+from rest_framework.relations import StringRelatedField
 from rest_framework.validators import UniqueTogetherValidator
 
 from .models import Author, Book, Borrow, BookRequest
 from django.utils import timezone
+
+from .services import is_past_date
 
 
 class AuthorSerializer(serializers.ModelSerializer):
@@ -12,7 +16,7 @@ class AuthorSerializer(serializers.ModelSerializer):
 
 
 class BookSerializer(serializers.ModelSerializer):
-    authors = AuthorSerializer(read_only=True)
+    authors = StringRelatedField(read_only=True)
 
     class Meta:
         model = Book
@@ -35,34 +39,40 @@ class BorrowSerializer(serializers.ModelSerializer):
 
 
 class BorrowCreateSerializer(serializers.ModelSerializer):
-    """
-    Используется для выдачи книги пользователю.
-    """
+    user = serializers.PrimaryKeyRelatedField(queryset=get_user_model().objects.all())
+
     class Meta:
         model = Borrow
-        fields = ("book", "due_date")
+        fields = ("user", "book", "due_date")
+
+    def validate_due_date(self, value):
+        if is_past_date(value):
+            raise serializers.ValidationError("Дата возврата не может быть в прошлом.")
+        return value
 
     def validate(self, attrs):
         book = attrs["book"]
+        user = attrs["user"]
+
+        # Проверка доступных копий
         if book.available_copies < 1:
             raise serializers.ValidationError("Нет доступных экземпляров книги.")
+
+        # Проверка, что у пользователя нет активного borrow на эту книгу
+        if Borrow.objects.filter(user=user, book=book, status__in=["borrowed", "overdue"]).exists():
+            raise serializers.ValidationError("У пользователя уже есть активный borrow для этой книги.")
+
         return attrs
 
     def create(self, validated_data):
-        user = self.context["request"].user
-        # убираем book из validated_data, чтобы не передавать дважды
-        book = validated_data.pop("book")
+        book = validated_data["book"]
 
         # уменьшаем доступные копии книги
         book.available_copies -= 1
         book.save()
 
-        # создаём Borrow
-        borrow = Borrow.objects.create(
-            user=user,
-            book=book,
-            **validated_data  # book уже удалён из validated_data
-        )
+        # создаём borrow
+        borrow = Borrow.objects.create(**validated_data)
         return borrow
 
 
@@ -83,7 +93,6 @@ class BorrowReturnSerializer(serializers.ModelSerializer):
         instance.returned_at = timezone.now()
         instance.save()
 
-        # Возвращаем книгу на полку
         book = instance.book
         book.available_copies += 1
         book.save()
@@ -118,18 +127,24 @@ class BookRequestCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = BookRequest
         fields = ("user", "book", "desired_due_date")
-        validators = [
-            UniqueTogetherValidator(
-                queryset=BookRequest.objects.all(),
-                fields=["user", "book"],
-                message="Вы уже отправили заявку на эту книгу."
-            )
-        ]
 
     def validate(self, attrs):
+        user = attrs["user"]
+        book = attrs["book"]
+
+        if BookRequest.objects.filter(user=user, book=book, status="pending").exists():
+            raise serializers.ValidationError("У вас уже есть активная заявка на эту книгу.")
+
+        from .models import Borrow
+        if Borrow.objects.filter(user=user, book=book, status__in=["borrowed", "overdue"]).exists():
+            raise serializers.ValidationError(
+                "Вы не можете оставить заявку на эту книгу, пока она не возвращена."
+            )
+
         desired_due_date = attrs.get("desired_due_date")
-        if desired_due_date and desired_due_date <= timezone.now().date():
+        if desired_due_date and is_past_date(desired_due_date):
             raise serializers.ValidationError("Дата возврата должна быть позже сегодняшнего дня.")
+
         return attrs
 
     def create(self, validated_data):
@@ -142,22 +157,44 @@ class BookRequestApproveSerializer(serializers.ModelSerializer):
         fields = ("id",)
 
     def update(self, instance, validated_data):
+        book = instance.book
+        user = instance.user
+
+        from .models import Borrow
+        if Borrow.objects.filter(user=user, book=book, status__in=["borrowed", "overdue"]).exists():
+            raise serializers.ValidationError(
+                "Невозможно одобрить заявку: у пользователя уже есть активный borrow для этой книги."
+            )
+
         instance.status = "approved"
         instance.save()
 
-        book = instance.book
-
-        # Создаём Borrow с датой, указанной в заявке
         Borrow.objects.create(
-            user=instance.user,
+            user=user,
             book=book,
             due_date=instance.desired_due_date,
             status="borrowed"
         )
 
-        # уменьшаем копии
         if book.available_copies > 0:
             book.available_copies -= 1
             book.save()
 
+        return instance
+
+
+class BookRequestRejectSerializer(serializers.ModelSerializer):
+    reject_reason = serializers.CharField(required=True, help_text="Причина отклонения заявки")
+
+    class Meta:
+        model = BookRequest
+        fields = ("reject_reason",)
+
+    def update(self, instance, validated_data):
+        if instance.status != "pending":
+            raise serializers.ValidationError("Эта заявка уже обработана.")
+
+        instance.status = "rejected"
+        instance.reject_reason = validated_data["reject_reason"]
+        instance.save()
         return instance
