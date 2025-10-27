@@ -163,7 +163,7 @@ class BookRequestApproveSerializer(serializers.ModelSerializer):
         from .models import Borrow
         if Borrow.objects.filter(user=user, book=book, status__in=["borrowed", "overdue"]).exists():
             raise serializers.ValidationError(
-                "Невозможно одобрить заявку: у пользователя уже есть активный borrow для этой книги."
+                "Невозможно одобрить заявку: у пользователя уже есть активный экземпляр этой книги."
             )
 
         instance.status = "approved"
