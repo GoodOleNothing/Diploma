@@ -2,9 +2,10 @@ from django.contrib import admin
 from users.models import User
 from library.models import Author, Book, Borrow, BookRequest
 
+
 @admin.register(User)
 class User(admin.ModelAdmin):
-    list_display = ('email', 'phone', 'avatar', 'city', 'is_active')
+    list_display = ('id', 'email', 'phone', 'avatar', 'city', 'is_active')
 
 
 @admin.register(Author)

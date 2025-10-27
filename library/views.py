@@ -7,7 +7,7 @@ from .models import Author, Book, Borrow, BookRequest
 from .serializers import (
     AuthorSerializer, BookSerializer, BookCreateUpdateSerializer,
     BorrowSerializer, BorrowCreateSerializer, BorrowReturnSerializer,
-    BookRequestCreateSerializer, BookRequestApproveSerializer
+    BookRequestCreateSerializer, BookRequestApproveSerializer, BookRequestSerializer
 )
 
 
@@ -52,7 +52,7 @@ class BorrowViewSet(viewsets.ModelViewSet):
         return BorrowSerializer
 
     @action(detail=True, methods=["post"])
-    def return_book(self, request, pk=None):
+    def return_borrow(self, request, pk=None):
         borrow = self.get_object()
         serializer = BorrowReturnSerializer(borrow, data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -73,14 +73,14 @@ class BookRequestViewSet(viewsets.ModelViewSet):
     queryset = BookRequest.objects.all()
     permission_classes = [IsAuthenticated]
 
-
     def get_serializer_class(self):
-        if self.action == "approve_request":
+        if self.action in ("create", "update", "partial_update"):
+            return BookRequestCreateSerializer
+        if self.action == "approve":
             return BookRequestApproveSerializer
-        return BookRequestCreateSerializer
+        return BookRequestSerializer
 
     def get_queryset(self):
-        # Админ видит все, пользователь — только свои
         user = self.request.user
         if user.groups.filter(name="Administrator").exists():
             return BookRequest.objects.all()

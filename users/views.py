@@ -11,12 +11,6 @@ class RegisterView(generics.CreateAPIView):
     serializer_class = UserRegisterSerializer
 
 
-#class UserDetailView(generics.RetrieveAPIView):
-#    queryset = User.objects.all()
-#    permission_classes = [IsAuthenticated]
-#    serializer_class = UserSerializer
-
-
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer

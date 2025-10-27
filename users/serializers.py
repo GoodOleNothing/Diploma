@@ -10,7 +10,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ("id", "email",  "phone", "avatar", "city", "borrows")
+        fields = ("id", "email", "password", "phone", "avatar", "city", "borrows")
 
     def get_borrows(self, obj):
         borrows_qs = Borrow.objects.filter(user=obj.id)

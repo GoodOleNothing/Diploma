@@ -61,7 +61,6 @@ class BorrowCreateSerializer(serializers.ModelSerializer):
         borrow = Borrow.objects.create(
             user=user,
             book=book,
-            status="borrowed",
             **validated_data  # book уже удалён из validated_data
         )
         return borrow
@@ -77,7 +76,7 @@ class BorrowReturnSerializer(serializers.ModelSerializer):
         fields = ("id",)
 
     def update(self, instance, validated_data):
-        if instance.status != "borrowed":
+        if instance.status != "borrowed" and instance.status != "overdue":
             raise serializers.ValidationError("Эта книга уже была возвращена.")
 
         instance.status = "returned"
@@ -90,6 +89,27 @@ class BorrowReturnSerializer(serializers.ModelSerializer):
         book.save()
 
         return instance
+
+
+class BookRequestSerializer(serializers.ModelSerializer):
+    user = serializers.SerializerMethodField()
+    book = serializers.SerializerMethodField()
+
+    class Meta:
+        model = BookRequest
+        fields = "__all__"
+
+    def get_user(self, obj):
+        return {
+            "id": obj.user.id,
+            "email": obj.user.email
+        }
+
+    def get_book(self, obj):
+        return {
+            "id": obj.book.id,
+            "title": obj.book.title
+        }
 
 
 class BookRequestCreateSerializer(serializers.ModelSerializer):
@@ -107,15 +127,13 @@ class BookRequestCreateSerializer(serializers.ModelSerializer):
         ]
 
     def validate(self, attrs):
-        if attrs["desired_due_date"] <= timezone.now().date():
+        desired_due_date = attrs.get("desired_due_date")
+        if desired_due_date and desired_due_date <= timezone.now().date():
             raise serializers.ValidationError("Дата возврата должна быть позже сегодняшнего дня.")
         return attrs
 
     def create(self, validated_data):
-        return BookRequest.objects.create(
-            user=self.context["request"].user,
-            **validated_data
-        )
+        return BookRequest.objects.create(**validated_data)
 
 
 class BookRequestApproveSerializer(serializers.ModelSerializer):
