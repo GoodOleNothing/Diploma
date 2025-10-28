@@ -1,0 +1,823 @@
+[
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2025-10-25T07:44:43.466Z",
+        "user": 1,
+        "content_type": 6,
+        "object_id": "2",
+        "object_repr": "test1@test.com",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2025-10-25T07:45:35.958Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "1",
+        "object_repr": "Федор Достоевский",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2025-10-25T08:01:26.099Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "1",
+        "object_repr": "Братья Карамазовы",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2025-10-25T08:02:07.272Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "1",
+        "object_repr": "Borrow object (1)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2025-10-25T08:02:37.623Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "1",
+        "object_repr": "Borrow object (1)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2025-10-25T08:02:45.699Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "1",
+        "object_repr": "Borrow object (1)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2025-10-25T08:03:07.725Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "1",
+        "object_repr": "Borrow object (1)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+        "action_time": "2025-10-26T03:30:02.916Z",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "Administartor",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+        "action_time": "2025-10-26T03:30:25.753Z",
+        "user": 1,
+        "content_type": 6,
+        "object_id": "1",
+        "object_repr": "admin@example.com",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+        "action_time": "2025-10-26T03:33:12.720Z",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "Administrator",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+        "action_time": "2025-10-26T03:34:52.793Z",
+        "user": 1,
+        "content_type": 6,
+        "object_id": "2",
+        "object_repr": "test1@test.com",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+        "action_time": "2025-10-26T04:12:40.721Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "2",
+        "object_repr": "Подросток",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+        "action_time": "2025-10-26T05:31:15.953Z",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "Administrator",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+        "action_time": "2025-10-26T08:44:00.190Z",
+        "user": 1,
+        "content_type": 6,
+        "object_id": "2",
+        "object_repr": "test1@test.com",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+        "action_time": "2025-10-26T08:46:35.142Z",
+        "user": 1,
+        "content_type": 6,
+        "object_id": "5",
+        "object_repr": "test1@test.com",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+        "action_time": "2025-10-26T08:48:19.781Z",
+        "user": 1,
+        "content_type": 6,
+        "object_id": "6",
+        "object_repr": "This@fieldis.required",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+        "action_time": "2025-10-27T06:29:06.463Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "7",
+        "object_repr": "Borrow object (7)",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+        "action_time": "2025-10-27T06:35:40.642Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "7",
+        "object_repr": "Borrow object (7)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0414\\u043e\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+        "action_time": "2025-10-27T06:36:39.418Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "7",
+        "object_repr": "Borrow object (7)",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+        "action_time": "2025-10-27T06:39:29.742Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "7",
+        "object_repr": "Borrow object (7)",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+        "action_time": "2025-10-27T06:54:39.858Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "9",
+        "object_repr": "Borrow object (9)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0414\\u043e\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+        "action_time": "2025-10-27T06:57:21.386Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "9",
+        "object_repr": "test3@test.com → Мастер и Маргарита (pending)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 23,
+    "fields": {
+        "action_time": "2025-10-27T07:02:09.001Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "9",
+        "object_repr": "Borrow object (9)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 24,
+    "fields": {
+        "action_time": "2025-10-27T07:19:35.986Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "11",
+        "object_repr": "Borrow object (11)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 25,
+    "fields": {
+        "action_time": "2025-10-27T07:20:15.196Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "11",
+        "object_repr": "Borrow object (11)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 26,
+    "fields": {
+        "action_time": "2025-10-27T07:24:36.776Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "12",
+        "object_repr": "Borrow object (12)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 27,
+    "fields": {
+        "action_time": "2025-10-27T07:24:36.778Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "11",
+        "object_repr": "Borrow object (11)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 28,
+    "fields": {
+        "action_time": "2025-10-27T07:26:29.901Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "13",
+        "object_repr": "Borrow object (13)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 29,
+    "fields": {
+        "action_time": "2025-10-27T07:26:40.162Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "13",
+        "object_repr": "Borrow object (13)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 30,
+    "fields": {
+        "action_time": "2025-10-27T07:53:21.913Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "3",
+        "object_repr": "Borrow object (3)",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 31,
+    "fields": {
+        "action_time": "2025-10-27T07:53:40.524Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "3",
+        "object_repr": "Borrow object (3)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 32,
+    "fields": {
+        "action_time": "2025-10-27T07:53:51.875Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "3",
+        "object_repr": "Borrow object (3)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 33,
+    "fields": {
+        "action_time": "2025-10-27T07:57:48.750Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "4",
+        "object_repr": "Borrow object (4)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 34,
+    "fields": {
+        "action_time": "2025-10-27T08:14:17.953Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "2",
+        "object_repr": "Подросток",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0414\\u043e\\u0441\\u0442\\u0443\\u043f\\u043d\\u043e \\u043a\\u043e\\u043f\\u0438\\u0439\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 35,
+    "fields": {
+        "action_time": "2025-10-27T08:14:26.274Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "3",
+        "object_repr": "Мастер и Маргарита",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0414\\u043e\\u0441\\u0442\\u0443\\u043f\\u043d\\u043e \\u043a\\u043e\\u043f\\u0438\\u0439\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 36,
+    "fields": {
+        "action_time": "2025-10-27T08:14:31.358Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "1",
+        "object_repr": "Братья Карамазовы",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0414\\u043e\\u0441\\u0442\\u0443\\u043f\\u043d\\u043e \\u043a\\u043e\\u043f\\u0438\\u0439\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 37,
+    "fields": {
+        "action_time": "2025-10-27T08:25:31.531Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "15",
+        "object_repr": "Borrow object (15)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 38,
+    "fields": {
+        "action_time": "2025-10-27T09:49:35.237Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "3",
+        "object_repr": "Мастер и Маргарита",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0414\\u043e\\u0441\\u0442\\u0443\\u043f\\u043d\\u043e \\u043a\\u043e\\u043f\\u0438\\u0439\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 39,
+    "fields": {
+        "action_time": "2025-10-27T09:51:25.880Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "3",
+        "object_repr": "Мастер и Маргарита",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0414\\u043e\\u0441\\u0442\\u0443\\u043f\\u043d\\u043e \\u043a\\u043e\\u043f\\u0438\\u0439\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 40,
+    "fields": {
+        "action_time": "2025-10-27T11:04:09.652Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "2",
+        "object_repr": "Borrow object (2)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 41,
+    "fields": {
+        "action_time": "2025-10-27T11:04:45.121Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "2",
+        "object_repr": "Borrow object (2)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0414\\u043e\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 42,
+    "fields": {
+        "action_time": "2025-10-27T11:05:10.164Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "3",
+        "object_repr": "Borrow object (3)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 43,
+    "fields": {
+        "action_time": "2025-10-27T11:05:41.663Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "4",
+        "object_repr": "Borrow object (4)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "auth.group",
+    "pk": 1,
+    "fields": {
+        "name": "Administrator",
+        "permissions": [
+            5,
+            6,
+            7,
+            8,
+            33,
+            34,
+            35,
+            36,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            21,
+            22,
+            23,
+            24
+        ]
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "ydyanikgsd1k2fbuchmt9w41phxsfyt0",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCgwFSX7nsGMgyDVA0kpV0Z765NutDtf-_9lwi4rSVsnZcwJ3ERWpx-t4j04LqDdMd6a5JaXZc5yl2RB-1yaomf18P9OyjYy7fOKiZmm6PV2TggUBYBHCA5r4ETDnh2nonQs8pGeWOGZEbL1o6OgMX7A_6KODE:1vCXCZ:lHxMauphSbDOgHIf3rB3lJHMjCP3Mik1jLXd1X-BpnE",
+        "expire_date": "2025-11-08T05:52:31.570Z"
+    }
+},
+{
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$ZyW42aMxlncvRScww5DMna$ONR8YqSNqnY3kjOl3bUWrH3Yv+J17pI8s54KBgg56/U=",
+        "last_login": "2025-10-25T05:52:31Z",
+        "is_superuser": true,
+        "first_name": "",
+        "last_name": "",
+        "is_staff": true,
+        "date_joined": "2025-10-25T05:40:27Z",
+        "email": "admin@example.com",
+        "phone": null,
+        "avatar": "",
+        "city": null,
+        "is_active": true,
+        "groups": [
+            1
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$h654pJioK9cZXWppLjOif9$0rU1LI0YibZmDm1AlvF0Q+pSQOjH2C7MCFaUTGYnaUQ=",
+        "last_login": null,
+        "is_superuser": false,
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "date_joined": "2025-10-25T08:35:45.090Z",
+        "email": "test2@test.com",
+        "phone": null,
+        "avatar": "",
+        "city": null,
+        "is_active": true,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$Uta5hWbbfFyGH48jijzNpz$3kbRHHTZbF70vssJ0E0BDi5JbZxkg0NC9U+88y1QuIE=",
+        "last_login": null,
+        "is_superuser": false,
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "date_joined": "2025-10-26T08:44:14Z",
+        "email": "test1@test.com",
+        "phone": null,
+        "avatar": "",
+        "city": null,
+        "is_active": true,
+        "groups": [
+            1
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 8,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$t5oCMEg3rqfEjM9FV97bT3$rsT8Vj/yWd3zXY3PH2SBeUiu9bDG94gM6rU9ZsTWyts=",
+        "last_login": null,
+        "is_superuser": false,
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "date_joined": "2025-10-26T09:07:42.435Z",
+        "email": "test3@test.com",
+        "phone": null,
+        "avatar": "",
+        "city": null,
+        "is_active": true,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "library.author",
+    "pk": 1,
+    "fields": {
+        "first_name": "Федор",
+        "last_name": "Достоевский",
+        "bio": "Фёдор Миха́йлович Достое́вский — русский писатель, мыслитель, философ и публицист."
+    }
+},
+{
+    "model": "library.author",
+    "pk": 2,
+    "fields": {
+        "first_name": "Михаил",
+        "last_name": "Булгаков",
+        "bio": "Михаи́л Афана́сьевич Булга́ков — русский писатель советского периода, врач, драматург, театральный режиссёр и актёр."
+    }
+},
+{
+    "model": "library.book",
+    "pk": 1,
+    "fields": {
+        "title": "Братья Карамазовы",
+        "author": 1,
+        "description": "Это последнее и одно из самых известных произведений писателя, в котором исследуются глубокие философские темы веры, морали, свободы и отцеубийства через историю провинциальной семьи Карамазовых.",
+        "genre": "Роман",
+        "total_copies": 6,
+        "available_copies": 5,
+        "created_at": "2025-10-25T08:01:26.095Z"
+    }
+},
+{
+    "model": "library.book",
+    "pk": 2,
+    "fields": {
+        "title": "Подросток",
+        "author": 1,
+        "description": "«Подро́сток» — роман Фёдора Михайловича Достоевского, начат в феврале 1874 и закончен в ноябре 1875 года. Впервые опубликован в 1875 году в журнале «Отечественные записки» с подзаголовком «Записки юноши».",
+        "genre": "роман",
+        "total_copies": 3,
+        "available_copies": 3,
+        "created_at": "2025-10-26T04:12:40.717Z"
+    }
+},
+{
+    "model": "library.book",
+    "pk": 3,
+    "fields": {
+        "title": "Мастер и Маргарита",
+        "author": 2,
+        "description": "«Ма́стер и Маргари́та» — роман Михаила Афанасьевича Булгакова, работа над которым началась, по одним данным, в 1928 году, по другим — в 1929-м и продолжалась вплоть до смерти писателя в марте 1940 года",
+        "genre": "Роман",
+        "total_copies": 10,
+        "available_copies": 10,
+        "created_at": "2025-10-27T05:33:27.342Z"
+    }
+},
+{
+    "model": "library.borrow",
+    "pk": 1,
+    "fields": {
+        "user": 8,
+        "book": 1,
+        "borrowed_at": "2025-10-27",
+        "due_date": "2025-11-10",
+        "returned_at": null,
+        "status": "borrowed"
+    }
+},
+{
+    "model": "library.borrow",
+    "pk": 2,
+    "fields": {
+        "user": 3,
+        "book": 1,
+        "borrowed_at": "2025-10-27",
+        "due_date": "2025-10-09",
+        "returned_at": null,
+        "status": "overdue"
+    }
+},
+{
+    "model": "library.borrow",
+    "pk": 3,
+    "fields": {
+        "user": 3,
+        "book": 3,
+        "borrowed_at": "2025-10-27",
+        "due_date": "2025-11-10",
+        "returned_at": null,
+        "status": "borrowed"
+    }
+},
+{
+    "model": "library.borrow",
+    "pk": 4,
+    "fields": {
+        "user": 3,
+        "book": 2,
+        "borrowed_at": "2025-10-27",
+        "due_date": "2025-10-27",
+        "returned_at": "2025-10-27T11:05:31Z",
+        "status": "returned"
+    }
+},
+{
+    "model": "library.bookrequest",
+    "pk": 1,
+    "fields": {
+        "user": 8,
+        "book": 1,
+        "desired_due_date": "2025-11-10",
+        "status": "approved",
+        "reject_reason": null,
+        "created_at": "2025-10-27T10:55:25.422Z"
+    }
+},
+{
+    "model": "library.bookrequest",
+    "pk": 2,
+    "fields": {
+        "user": 8,
+        "book": 2,
+        "desired_due_date": "2025-11-10",
+        "status": "rejected",
+        "reject_reason": "Some reason",
+        "created_at": "2025-10-27T10:55:38.179Z"
+    }
+},
+{
+    "model": "library.bookrequest",
+    "pk": 3,
+    "fields": {
+        "user": 8,
+        "book": 3,
+        "desired_due_date": "2025-11-10",
+        "status": "pending",
+        "reject_reason": null,
+        "created_at": "2025-10-27T10:55:43.922Z"
+    }
+}
+]
