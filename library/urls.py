@@ -9,7 +9,7 @@ router = DefaultRouter()
 router.register("admin_authors", AuthorViewSet)
 router.register("admin_books", BookViewSet)
 router.register("admin_borrows", BorrowViewSet)
-router.register("book-requests", BookRequestViewSet)
+router.register("book_requests", BookRequestViewSet)
 #urlpatterns = router.urls
 
 
