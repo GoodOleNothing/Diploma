@@ -34,6 +34,7 @@
 
 
 ### Запуск
+* Создание файла .env по образцу .env.sample
 * docker-compose up --build
 * Загрузка демо фикстуры: 
   * docker-compose exec web bash
