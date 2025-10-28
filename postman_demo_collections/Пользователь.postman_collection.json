@@ -1,0 +1,177 @@
+{
+	"info": {
+		"_postman_id": "f24e68d8-4d22-4085-aee1-3e2f57dba535",
+		"name": "Пользователь",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46090098"
+	},
+	"item": [
+		{
+			"name": " http://127.0.0.1:8000/api/users/token/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"test3@test.com\",\r\n    \"password\": \"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/users/token/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"token",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Список авторов (ListAPIView)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxNTA1NjczLCJpYXQiOjE3NjE0Njk2NzMsImp0aSI6ImJkMzUyNzhkYjY4NjQ1MTZhMmQ1OWFiNjE0YjU4MGY3IiwidXNlcl9pZCI6IjgifQ.H5G7i1H-fWJtyjR_w-pgAgtt3QpsJa636blwmJp1z4Q",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/library/authors/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"library",
+						"authors",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Список взятых книг (ListAPIView)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxNTA1NjczLCJpYXQiOjE3NjE0Njk2NzMsImp0aSI6ImJkMzUyNzhkYjY4NjQ1MTZhMmQ1OWFiNjE0YjU4MGY3IiwidXNlcl9pZCI6IjgifQ.H5G7i1H-fWJtyjR_w-pgAgtt3QpsJa636blwmJp1z4Q",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/library/borrows/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"library",
+						"borrows",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Список книг (ListAPIView)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxNTA1NjczLCJpYXQiOjE3NjE0Njk2NzMsImp0aSI6ImJkMzUyNzhkYjY4NjQ1MTZhMmQ1OWFiNjE0YjU4MGY3IiwidXNlcl9pZCI6IjgifQ.H5G7i1H-fWJtyjR_w-pgAgtt3QpsJa636blwmJp1z4Q",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/library/books/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"library",
+						"books",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Запрос на книгу (action)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxNTk4NTEwLCJpYXQiOjE3NjE1NjI1MTAsImp0aSI6Ijg3MGE0YzgyMzU3ODQ5Mzc5ZDdiM2MzODU1YmNkMDFjIiwidXNlcl9pZCI6IjgifQ.2loeWkA94qTAuCDJWiMoZp5ABkWicbOzJshqE_6r5d4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"book\": \r\n        \"1\"\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/library/book_requests/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"library",
+						"book_requests",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

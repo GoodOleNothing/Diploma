@@ -1,0 +1,366 @@
+{
+	"info": {
+		"_postman_id": "9ea9f8e9-e06d-4c4e-9d4e-a5dc8485e582",
+		"name": "Администратор",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46090098"
+	},
+	"item": [
+		{
+			"name": "Спсок пользователй (ViewSet)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxNTY3NTY4LCJpYXQiOjE3NjE1MzE1NjgsImp0aSI6IjZhM2UwNTE0MTQwNzQ4NjRhYTY4N2Y4MzA3YzE0N2IzIiwidXNlcl9pZCI6IjUifQ.zHZiqfSbVZzjARyg18__A1o0roZ8EDatxJk9-WWv5qM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\": \"testcity\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/users/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Список книг (ViewSet)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxNTc1OTk1LCJpYXQiOjE3NjE1Mzk5OTUsImp0aSI6ImExNzNkOTVmNzdlYzQxYTI4NTViNzY1M2Y2M2I2NTZmIiwidXNlcl9pZCI6IjUifQ.BK9ADNvf9TkSWr4vwcgCorJgaCZhNNK3jv27RiNxfrk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Мастер и Маргарита\",\r\n    \"author\":\"2\",\r\n    \"description\": \"«Ма́стер и Маргари́та» — роман Михаила Афанасьевича Булгакова, работа над которым началась, по одним данным, в 1928 году, по другим — в 1929-м и продолжалась вплоть до смерти писателя в марте 1940 года\",\r\n    \"genre\": \"Роман\",\r\n    \"total_copies\": \"10\",\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/library/admin_books/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"library",
+						"admin_books",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Список авторов (ViewSet)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxNTc1OTk1LCJpYXQiOjE3NjE1Mzk5OTUsImp0aSI6ImExNzNkOTVmNzdlYzQxYTI4NTViNzY1M2Y2M2I2NTZmIiwidXNlcl9pZCI6IjUifQ.BK9ADNvf9TkSWr4vwcgCorJgaCZhNNK3jv27RiNxfrk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\":\r\n        \"Михаил \",\r\n    \"last_name\":\r\n        \"Булгаков\",\r\n    \"bio\": \"Михаи́л Афана́сьевич Булга́ков — русский писатель советского периода, врач, драматург, театральный режиссёр и актёр.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/library/admin_authors/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"library",
+						"admin_authors",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Список запросов на книгу (ViewSet)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxNTY3NTY4LCJpYXQiOjE3NjE1MzE1NjgsImp0aSI6IjZhM2UwNTE0MTQwNzQ4NjRhYTY4N2Y4MzA3YzE0N2IzIiwidXNlcl9pZCI6IjUifQ.zHZiqfSbVZzjARyg18__A1o0roZ8EDatxJk9-WWv5qM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/library/book_requests/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"library",
+						"book_requests",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Список выданых книг (ViewSet)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxNTY3NTY4LCJpYXQiOjE3NjE1MzE1NjgsImp0aSI6IjZhM2UwNTE0MTQwNzQ4NjRhYTY4N2Y4MzA3YzE0N2IzIiwidXNlcl9pZCI6IjUifQ.zHZiqfSbVZzjARyg18__A1o0roZ8EDatxJk9-WWv5qM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/library/admin_borrows/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"library",
+						"admin_borrows",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Одобрение запроса (action)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxNTY3NTY4LCJpYXQiOjE3NjE1MzE1NjgsImp0aSI6IjZhM2UwNTE0MTQwNzQ4NjRhYTY4N2Y4MzA3YzE0N2IzIiwidXNlcl9pZCI6IjUifQ.zHZiqfSbVZzjARyg18__A1o0roZ8EDatxJk9-WWv5qM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/library/book_requests/7/approve/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"library",
+						"book_requests",
+						"7",
+						"approve",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Отклонение запроса (action)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxNTY3NTY4LCJpYXQiOjE3NjE1MzE1NjgsImp0aSI6IjZhM2UwNTE0MTQwNzQ4NjRhYTY4N2Y4MzA3YzE0N2IzIiwidXNlcl9pZCI6IjUifQ.zHZiqfSbVZzjARyg18__A1o0roZ8EDatxJk9-WWv5qM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/library/book_requests/7/approve/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"library",
+						"book_requests",
+						"7",
+						"approve",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Возврат книги (action)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxNTY3NTY4LCJpYXQiOjE3NjE1MzE1NjgsImp0aSI6IjZhM2UwNTE0MTQwNzQ4NjRhYTY4N2Y4MzA3YzE0N2IzIiwidXNlcl9pZCI6IjUifQ.zHZiqfSbVZzjARyg18__A1o0roZ8EDatxJk9-WWv5qM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/library/admin_borrows/6/return_borrow/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"library",
+						"admin_borrows",
+						"6",
+						"return_borrow",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
